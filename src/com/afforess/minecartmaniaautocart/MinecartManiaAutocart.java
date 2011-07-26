@@ -21,7 +21,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	public void onEnable(){
 		server = this.getServer();
 		description = this.getDescription();
-		MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ","") + "Configuration.xml", MinecartManiaCore.dataDirectory, new AutocartSettingParser());
+		MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ","") + "Configuration.xml", MinecartManiaCore.getDataDirectoryRelativePath(), new AutocartSettingParser());
 		getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.Normal, this);
 		getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
 		getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, listener, Priority.Normal, this);
