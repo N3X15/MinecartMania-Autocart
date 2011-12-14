@@ -9,7 +9,7 @@
 	<!-- Project information -->
 	<groupId>com.afforess</groupId>
 	<artifactId>minecartmaniaautocart</artifactId>
-	<version>1.2.9-SNAPSHOT</version>
+	<version>2.0-SNAPSHOT</version>
 	<name>Minecart Mania Autocart</name>
 	<url>http://afforess.com</url>
 	<description>A highly controversial, yet popular Minecart Mania plugin. Named after the single player mod that had the initial idea, this plugin is for servers who really don't like making complex setups and where realism isn't a concern. Autocart removes friction and forces all minecarts to always move at top speed. Minecarts are controlled by tapping to stop and go from the inside.</description>
@@ -47,21 +47,21 @@
 		<dependency>
 			<groupId>com.afforess</groupId>
 			<artifactId>minecartmaniacore</artifactId>
-			<version>1.2.9-SNAPSHOT</version>
+			<version>2.0-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Bukkit -->
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.1-R2-7CLAMS-SNAPSHOT</version>
 		</dependency>
 
 		<!-- CraftBukkit -->
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.1-R2-7CLAMS-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
