@@ -1,8 +1,6 @@
 package com.afforess.minecartmaniaautocart;
 
 import org.bukkit.Server;
-import org.bukkit.event.Event;
-import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,10 +21,12 @@ public class MinecartManiaAutocart extends JavaPlugin {
         server = getServer();
         description = getDescription();
         MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ", "") + "Configuration.xml", MinecartManiaCore.getDataDirectoryRelativePath(), new AutocartSettingParser());
-        getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.Normal, this);
-        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
-        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, listener, Priority.Normal, this);
-        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_EXIT, listener, Priority.Normal, this);
+        getServer().getPluginManager().registerEvents(listener, this);
+        getServer().getPluginManager().registerEvents(actionListener, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.Normal, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, listener, Priority.Normal, this);
+        //        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_EXIT, listener, Priority.Normal, this);
         log.info(description.getName() + " version " + description.getVersion() + " is enabled!");
     }
     

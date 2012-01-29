@@ -4,9 +4,11 @@ import java.util.Calendar;
 
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.vehicle.VehicleEnterEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
-import org.bukkit.event.vehicle.VehicleListener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
 
 import com.afforess.minecartmaniacore.config.LocaleParser;
@@ -14,9 +16,9 @@ import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.world.Item;
 import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 
-public class AutocartListener extends VehicleListener {
+public class AutocartListener implements Listener {
     
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onVehicleMove(final VehicleMoveEvent event) {
         if (event.getVehicle() instanceof Minecart) {
             final MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart) event.getVehicle());
@@ -52,7 +54,7 @@ public class AutocartListener extends VehicleListener {
         }
     }
     
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onVehicleEnter(final VehicleEnterEvent event) {
         if (event.isCancelled())
             return;
@@ -65,7 +67,7 @@ public class AutocartListener extends VehicleListener {
         }
     }
     
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onVehicleExit(final VehicleExitEvent event) {
         if (event.isCancelled())
             return;
