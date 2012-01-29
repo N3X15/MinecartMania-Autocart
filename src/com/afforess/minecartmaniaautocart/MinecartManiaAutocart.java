@@ -15,14 +15,12 @@ public class MinecartManiaAutocart extends JavaPlugin {
     public static Server server;
     public static PluginDescriptionFile description;
     private static final AutocartListener listener = new AutocartListener();
-    private static final AutocartActionListener actionListener = new AutocartActionListener();
     
     public void onEnable() {
         server = getServer();
         description = getDescription();
         MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ", "") + "Configuration.xml", MinecartManiaCore.getDataDirectoryRelativePath(), new AutocartSettingParser());
         getServer().getPluginManager().registerEvents(listener, this);
-        getServer().getPluginManager().registerEvents(actionListener, this);
         //        getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.Normal, this);
         //        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
         //        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, listener, Priority.Normal, this);

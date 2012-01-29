@@ -12,7 +12,9 @@ import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
 
 import com.afforess.minecartmaniacore.config.LocaleParser;
+import com.afforess.minecartmaniacore.event.MinecartClickedEvent;
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
+import com.afforess.minecartmaniacore.utils.DirectionUtils;
 import com.afforess.minecartmaniacore.world.Item;
 import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 
@@ -76,6 +78,19 @@ public class AutocartListener implements Listener {
             if (!minecart.isMoving()) {
                 minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
             }
+        }
+    }
+    
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onMinecartClickedEvent(final MinecartClickedEvent event) {
+        if (event.isActionTaken())
+            return;
+        final MinecartManiaMinecart minecart = event.getMinecart();
+        if (!minecart.isMoving()) {
+            final DirectionUtils.CompassDirection facingDir = DirectionUtils.getDirectionFromMinecartRotation((minecart.minecart.getPassenger().getLocation().getYaw() - 90.0F) % 360.0F);
+            minecart.minecart.setVelocity(Autocart.getMotionFromDirection(facingDir));
+        } else {
+            minecart.stopCart();
         }
     }
 }
