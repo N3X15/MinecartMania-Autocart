@@ -2,6 +2,7 @@ package com.afforess.minecartmaniaautocart;
 
 import java.util.Calendar;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +16,6 @@ import com.afforess.minecartmaniacore.config.LocaleParser;
 import com.afforess.minecartmaniacore.event.MinecartClickedEvent;
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.utils.DirectionUtils;
-import com.afforess.minecartmaniacore.world.Item;
 import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 
 public class AutocartListener implements Listener {
@@ -29,7 +29,7 @@ public class AutocartListener implements Listener {
             if (Autocart.doCooldown(minecart))
                 return;
             
-            if ((minecart.getLocation().getBlock().getTypeId() == Item.RAILS.getId()) && (!minecart.isAtIntersection() || !minecart.hasPlayerPassenger())) {
+            if ((minecart.getLocation().getBlock().getTypeId() == Material.RAILS.getId()) && (!minecart.isAtIntersection() || !minecart.hasPlayerPassenger())) {
                 if (!MinecartManiaAutocart.isAutocartOnlyForPlayers() || minecart.hasPlayerPassenger()) {
                     final int l = MinecartManiaWorld.getBlockData(minecart.minecart.getWorld(), minecart.getX(), minecart.getY(), minecart.getZ());
                     
